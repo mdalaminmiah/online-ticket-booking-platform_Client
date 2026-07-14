@@ -1,0 +1,42 @@
+{
+  "name": "online-ticket-booking-platform-client",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TicketBari — Online Ticket Booking Platform (React 19 + TypeScript + Tailwind v4)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.6.0",
+    "@tanstack/react-query": "^5.66.0",
+    "axios": "^1.7.9",
+    "better-auth": "^1.2.7",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.474.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.1",
+    "react-router-dom": "^7.1.5",
+    "recharts": "^2.15.1",
+    "swiper": "^11.2.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tailwindcss/vite": "^4.0.6",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.6",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
