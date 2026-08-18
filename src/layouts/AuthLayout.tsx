@@ -3,6 +3,7 @@ import { Logo } from '@/components/layout/Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { useAuth } from '@/context/AuthContext';
 import { FullScreenLoader } from '@/components/ui/Spinner';
+import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
 
 export default function AuthLayout() {
   const { status } = useAuth();
@@ -15,7 +16,9 @@ export default function AuthLayout() {
       <div className="relative hidden overflow-hidden bg-brand-700 lg:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
         <img
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80"
+          src={unsplashUrl(PHOTOS.planeWing, 1200)}
+          srcSet={unsplashSrcSet(PHOTOS.planeWing)}
+          sizes="50vw"
           alt=""
           className="h-full w-full object-cover opacity-25"
         />

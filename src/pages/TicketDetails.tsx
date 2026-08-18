@@ -15,6 +15,8 @@ import { useAuth } from '@/context/AuthContext';
 import { TransportIcon } from '@/components/tickets/TransportIcon';
 import { BookingModal } from '@/components/tickets/BookingModal';
 import { Countdown } from '@/components/ui/Countdown';
+import { SmartImage } from '@/components/ui/SmartImage';
+import { fallbackFor } from '@/constants/images';
 import { PageLoader } from '@/components/ui/Spinner';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { StatusBadge } from '@/components/ui/Badge';
@@ -88,9 +90,15 @@ export default function TicketDetails() {
 
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Image */}
-        <div className="overflow-hidden rounded-3xl">
-          <img src={ticket.image} alt={ticket.title} className="h-full max-h-[460px] w-full object-cover" />
-        </div>
+        <SmartImage
+          src={ticket.image}
+          alt={ticket.title}
+          ratio="4/3"
+          sizes="(min-width: 1024px) 46vw, 92vw"
+          fallback={fallbackFor(ticket.transportType)}
+          className="rounded-3xl"
+          priority
+        />
 
         {/* Info */}
         <div>
