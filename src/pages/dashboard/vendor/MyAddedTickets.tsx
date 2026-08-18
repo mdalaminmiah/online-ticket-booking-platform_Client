@@ -12,6 +12,8 @@ import { Modal } from '@/components/ui/Modal';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { TicketForm } from '@/components/dashboard/TicketForm';
 import { TransportIcon } from '@/components/tickets/TransportIcon';
+import { SmartImage } from '@/components/ui/SmartImage';
+import { fallbackFor } from '@/constants/images';
 import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency, formatDateTime } from '@/utils/format';
 import { TICKET_STATUS } from '@/constants';
@@ -69,15 +71,21 @@ export default function MyAddedTickets() {
           {data.map((t) => {
             const rejected = t.verificationStatus === TICKET_STATUS.REJECTED;
             return (
-              <article key={t._id} className="card flex flex-col overflow-hidden">
-                <div className="relative h-40 overflow-hidden">
-                  <img src={t.image} alt={t.title} className="h-full w-full object-cover" />
-                  <div className="absolute right-3 top-3">
+              <article key={t._id} className="card flex h-full flex-col overflow-hidden">
+                <div className="relative">
+                  <SmartImage
+                    src={t.image}
+                    alt={t.title}
+                    ratio="16/10"
+                    sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+                    fallback={fallbackFor(t.transportType)}
+                  />
+                  <div className="pointer-events-none absolute right-3 top-3">
                     <StatusBadge status={t.verificationStatus} />
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <h3 className="line-clamp-1 font-semibold">{t.title}</h3>
+                  <h3 className="line-clamp-2 min-h-11 font-semibold leading-snug">{t.title}</h3>
                   <p className="mt-1.5 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
                     <TransportIcon type={t.transportType} size={14} /> {t.from} <ArrowRight size={12} /> {t.to}
                   </p>
