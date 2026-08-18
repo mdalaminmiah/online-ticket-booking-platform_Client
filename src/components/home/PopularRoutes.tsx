@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { SmartImage } from '@/components/ui/SmartImage';
+import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
 
+const TILE_SIZES = '(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw';
+
+/** Each tile pairs the destination with imagery that matches the region —
+ *  beach for Cox's Bazar, hill country for Chittagong and Sylhet, river for
+ *  the launch route to Barishal. */
 const ROUTES = [
-  { from: 'Dhaka', to: "Cox's Bazar", image: 'https://images.unsplash.com/photo-1590059390047-f5a48c6f4d97?w=600&q=80', price: 1200 },
-  { from: 'Dhaka', to: 'Chittagong', image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80', price: 850 },
-  { from: 'Dhaka', to: 'Sylhet', image: 'https://images.unsplash.com/photo-1585484173186-6bcb37d20b7e?w=600&q=80', price: 4500 },
-  { from: 'Dhaka', to: 'Barishal', image: 'https://images.unsplash.com/photo-1528150177508-7cc0c36cc890?w=600&q=80', price: 1500 },
+  { from: 'Dhaka', to: "Cox's Bazar", photo: PHOTOS.beachSunset, alt: 'Waves washing a wide sandy beach at sunset', price: 1200 },
+  { from: 'Dhaka', to: 'Chittagong', photo: PHOTOS.hillsRiver, alt: 'River winding through forested hill country', price: 850 },
+  { from: 'Dhaka', to: 'Sylhet', photo: PHOTOS.greenHills, alt: 'Road curving across green rolling hills at sunrise', price: 4500 },
+  { from: 'Dhaka', to: 'Barishal', photo: PHOTOS.boatRiver, alt: 'Wooden boat crossing calm river water', price: 1500 },
 ];
 
 export function PopularRoutes() {
@@ -18,14 +25,21 @@ export function PopularRoutes() {
           <Link
             key={`${r.from}-${r.to}`}
             to={`/tickets?search=${encodeURIComponent(r.to)}`}
-            className="group relative h-56 overflow-hidden rounded-2xl"
+            className="group relative overflow-hidden rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
           >
-            <img src={r.image} alt={`${r.from} to ${r.to}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+            <SmartImage
+              src={unsplashUrl(r.photo, 800, 3 / 2)}
+              srcSet={unsplashSrcSet(r.photo, 3 / 2)}
+              sizes={TILE_SIZES}
+              alt={r.alt}
+              ratio="3/2"
+              imgClassName="transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 text-white">
               <p className="text-xs text-slate-300">From ৳{r.price}</p>
               <p className="mt-1 flex items-center gap-1.5 text-lg font-bold">
-                {r.from} <ArrowRight size={16} /> {r.to}
+                {r.from} <ArrowRight size={16} className="shrink-0" /> {r.to}
               </p>
             </div>
           </Link>
