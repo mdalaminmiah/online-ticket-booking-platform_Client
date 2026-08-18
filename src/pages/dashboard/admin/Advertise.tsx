@@ -8,6 +8,8 @@ import { TableSkeleton } from '@/components/ui/Skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { TransportIcon } from '@/components/tickets/TransportIcon';
+import { SmartImage } from '@/components/ui/SmartImage';
+import { fallbackFor } from '@/constants/images';
 import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency } from '@/utils/format';
 import { MAX_ADVERTISED } from '@/constants';
@@ -57,7 +59,12 @@ export default function Advertise() {
       header: 'Ticket',
       render: (t) => (
         <div className="flex items-center gap-3">
-          <img src={t.image} alt="" className="h-10 w-14 rounded-lg object-cover" />
+          <SmartImage
+            src={t.image}
+            alt=""
+            fallback={fallbackFor(t.transportType)}
+            className="h-10 w-14 shrink-0 rounded-lg"
+          />
           <div>
             <p className="line-clamp-1 font-medium">{t.title}</p>
             <p className="flex items-center gap-1 text-xs text-slate-400">
