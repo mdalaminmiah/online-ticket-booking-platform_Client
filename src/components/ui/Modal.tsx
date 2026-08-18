@@ -31,21 +31,24 @@ export function Modal({
   const width = size === 'sm' ? 'max-w-sm' : size === 'lg' ? 'max-w-2xl' : 'max-w-lg';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4">
       <div
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden
       />
+      {/* Capped to the viewport with its own scroller: tall forms (Add/Update
+          Ticket) used to overflow off-screen on short and mobile viewports
+          with no way to reach the submit button. */}
       <div
         role="dialog"
         aria-modal="true"
         className={cn(
-          'relative w-full animate-fade-up rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900',
+          'relative my-auto flex max-h-[calc(100dvh-2rem)] w-full flex-col animate-fade-up rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900',
           width,
         )}
       >
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h3 className="text-lg font-semibold">{title}</h3>
           <button
             onClick={onClose}
@@ -55,7 +58,7 @@ export function Modal({
             <X size={20} />
           </button>
         </div>
-        <div className="px-6 py-5">{children}</div>
+        <div className="overflow-y-auto px-6 py-5">{children}</div>
       </div>
     </div>
   );
