@@ -29,13 +29,10 @@ export default function AllTickets() {
 
   const debouncedSearch = useDebounce(search, 450);
 
-  // Reset to first page whenever a filter changes.
   useEffect(() => {
     setPage(1);
   }, [debouncedSearch, transportType, sort]);
 
-  // Keep the URL in sync so filtered views are shareable/bookmarkable and
-  // survive back/forward navigation and reloads.
   useEffect(() => {
     const next = new URLSearchParams();
     if (debouncedSearch) next.set('search', debouncedSearch);
@@ -76,7 +73,6 @@ export default function AllTickets() {
         description="Search, filter and sort through every admin-approved ticket."
       />
 
-      {/* Filter bar */}
       <div className="card mt-8 flex flex-col gap-4 p-4 lg:flex-row lg:items-center">
         <div className="relative flex-1">
           <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -128,7 +124,6 @@ export default function AllTickets() {
         </div>
       </div>
 
-      {/* Results */}
       <div className="mt-8">
         {isLoading ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

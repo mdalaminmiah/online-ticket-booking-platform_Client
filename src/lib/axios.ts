@@ -9,7 +9,6 @@ export const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach the BetterAuth JWT to every request.
 api.interceptors.request.use((config) => {
   const token = tokenStore.get();
   if (token) {
@@ -19,11 +18,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-/**
- * Re-mint the JWT from the live BetterAuth session (the cached token expires).
- * Concurrent 401s share a single in-flight refresh so we only hit the token
- * endpoint once.
- */
 let refreshPromise: Promise<string | null> | null = null;
 function refreshToken(): Promise<string | null> {
   if (!refreshPromise) {
@@ -45,8 +39,6 @@ function refreshToken(): Promise<string | null> {
   return refreshPromise;
 }
 
-// On a 401 (expired token), refresh once and replay the original request so a
-// long-lived session doesn't start silently failing after the JWT lapses.
 api.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
@@ -64,7 +56,6 @@ api.interceptors.response.use(
   },
 );
 
-/** Normalise API errors into readable messages for toasts. */
 export function getErrorMessage(error: unknown, fallback = 'Something went wrong'): string {
   if (error instanceof AxiosError) {
     return (error.response?.data as { message?: string } | undefined)?.message ?? error.message ?? fallback;

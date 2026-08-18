@@ -3,7 +3,6 @@ import { env } from '@/config/env';
 
 let stripePromise: Promise<Stripe | null> | null = null;
 
-/** Singleton Stripe.js loader. */
 export function getStripePromise(): Promise<Stripe | null> {
   if (!stripePromise) {
     stripePromise = env.stripePublishableKey

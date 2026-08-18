@@ -40,7 +40,6 @@ export default function ManageTickets() {
     mutationFn: ({ id, action }: { id: string; action: 'approve' | 'reject' }) =>
       action === 'approve' ? adminApi.approveTicket(id) : adminApi.rejectTicket(id),
     onSuccess: (_d, v) => {
-      // Approving/rejecting affects the advertise pool and the public lists too.
       queryClient.invalidateQueries({ queryKey: ['admin', 'tickets'] });
       queryClient.invalidateQueries({ queryKey: ['admin', 'advertise'] });
       queryClient.invalidateQueries({ queryKey: ['tickets'] });

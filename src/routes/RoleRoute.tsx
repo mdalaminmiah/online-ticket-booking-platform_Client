@@ -3,7 +3,6 @@ import { useAuth } from '@/context/AuthContext';
 import { FullScreenLoader } from '@/components/ui/Spinner';
 import type { Role } from '@/constants';
 
-/** Restricts nested routes to specific roles. Assumes it sits under ProtectedRoute. */
 export function RoleRoute({ allow }: { allow: Role[] }) {
   const { status, user } = useAuth();
 

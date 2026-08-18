@@ -125,12 +125,10 @@ export default function DashboardLayout() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <ScrollToTop />
 
-      {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-slate-200 bg-white lg:block dark:border-slate-800 dark:bg-slate-900">
         {sidebar}
       </aside>
 
-      {/* Mobile drawer */}
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-slate-900/50" onClick={() => setOpen(false)} />
@@ -140,7 +138,6 @@ export default function DashboardLayout() {
         </div>
       )}
 
-      {/* Content */}
       <div className="lg:pl-72">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-4 backdrop-blur-lg sm:px-6 dark:border-slate-800 dark:bg-slate-950/80">
           <button

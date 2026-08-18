@@ -20,7 +20,6 @@ function compute(target: number): Countdown {
   };
 }
 
-/** Live countdown to a departure date/time, ticking every second. */
 export function useCountdown(target: string | Date): Countdown {
   const targetMs = new Date(target).getTime();
   const [state, setState] = useState<Countdown>(() => compute(targetMs));

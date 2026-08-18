@@ -1,6 +1,5 @@
 import { AlertTriangle, RotateCw } from 'lucide-react';
 
-/** Inline error panel for failed data fetches, with an optional retry action. */
 export function ErrorState({
   title = 'Something went wrong',
   description = "We couldn't load this content. Please check your connection and try again.",

@@ -1,23 +1,7 @@
-/**
- * Central image library.
- *
- * Every URL below was verified to return HTTP 200 and to actually depict its
- * subject — several of the previously hard-coded photos either 404'd or showed
- * unrelated content (a landfill on a "deluxe coach" listing, the Taj Mahal on a
- * Chittagong route tile). Keep new entries in this file so they can be checked
- * in one place rather than scattered across components.
- */
-
 const UNSPLASH_BASE = 'https://images.unsplash.com';
 
-/** Widths we request from the CDN, shared by every responsive image. */
 export const IMAGE_WIDTHS = [400, 600, 800, 1200, 1600, 2000] as const;
 
-/**
- * Builds a CDN URL. `auto=format` lets Unsplash serve WebP/AVIF to browsers
- * that accept it, and `fit=crop` guarantees the delivered file already matches
- * the aspect ratio we render at, so `object-cover` never has to crop much.
- */
 export function unsplashUrl(id: string, width: number, aspect?: number): string {
   const params = new URLSearchParams({
     w: String(width),
@@ -29,15 +13,11 @@ export function unsplashUrl(id: string, width: number, aspect?: number): string 
   return `${UNSPLASH_BASE}/${id}?${params.toString()}`;
 }
 
-/** `srcset` string so the browser can pick the cheapest adequate file. */
 export function unsplashSrcSet(id: string, aspect?: number): string {
   return IMAGE_WIDTHS.map((w) => `${unsplashUrl(id, w, aspect)} ${w}w`).join(', ');
 }
 
-/** Local, bundled SVG — cannot 404, used as the last-resort fallback. */
 export const PLACEHOLDER_IMAGE = '/placeholder-ticket.svg';
-
-/* ── Verified photo IDs ─────────────────────────────────────── */
 
 export const PHOTOS = {
   busNight: 'photo-1544620347-c4fd4a3d5957',
@@ -55,10 +35,6 @@ export const PHOTOS = {
   greenHills: 'photo-1470071459604-3b5ec3a7fe05',
 } as const;
 
-/**
- * Per-transport fallback used when a vendor-supplied image fails to load, so a
- * broken listing still shows something on-brand and on-topic.
- */
 export const TRANSPORT_FALLBACK: Record<string, string> = {
   Bus: unsplashUrl(PHOTOS.busCoachSunset, 800, 16 / 10),
   Train: unsplashUrl(PHOTOS.trainScenic, 800, 16 / 10),
@@ -66,7 +42,6 @@ export const TRANSPORT_FALLBACK: Record<string, string> = {
   Plane: unsplashUrl(PHOTOS.planeGate, 800, 16 / 10),
 };
 
-/** Resolves the best fallback for a ticket-shaped record. */
 export function fallbackFor(transportType?: string): string {
   return (transportType && TRANSPORT_FALLBACK[transportType]) || PLACEHOLDER_IMAGE;
 }

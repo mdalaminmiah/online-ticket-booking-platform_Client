@@ -6,7 +6,6 @@ import { ProtectedRoute } from '@/routes/ProtectedRoute';
 import { RoleRoute } from '@/routes/RoleRoute';
 import { ROLES } from '@/constants';
 
-// Public / shared pages
 import Home from '@/pages/Home';
 import AllTickets from '@/pages/AllTickets';
 import TicketDetails from '@/pages/TicketDetails';
@@ -18,18 +17,14 @@ import AuthCallback from '@/pages/AuthCallback';
 import NotFound from '@/pages/NotFound';
 import RouteError from '@/pages/RouteError';
 
-// Dashboard — shared
 import Overview from '@/pages/dashboard/Overview';
 import Profile from '@/pages/dashboard/Profile';
-// User
 import MyBookedTickets from '@/pages/dashboard/user/MyBookedTickets';
 import TransactionHistory from '@/pages/dashboard/user/TransactionHistory';
-// Vendor
 import AddTicket from '@/pages/dashboard/vendor/AddTicket';
 import MyAddedTickets from '@/pages/dashboard/vendor/MyAddedTickets';
 import RequestedBookings from '@/pages/dashboard/vendor/RequestedBookings';
 import Revenue from '@/pages/dashboard/vendor/Revenue';
-// Admin
 import ManageTickets from '@/pages/dashboard/admin/ManageTickets';
 import ManageUsers from '@/pages/dashboard/admin/ManageUsers';
 import Advertise from '@/pages/dashboard/admin/Advertise';
@@ -43,7 +38,6 @@ export const router = createBrowserRouter([
       { path: 'tickets', element: <AllTickets /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
-      // Ticket Details is a protected route (spec requirement 5).
       {
         element: <ProtectedRoute />,
         children: [{ path: 'tickets/:id', element: <TicketDetails /> }],
@@ -72,7 +66,6 @@ export const router = createBrowserRouter([
           { index: true, element: <Overview /> },
           { path: 'profile', element: <Profile /> },
 
-          // User-only
           {
             element: <RoleRoute allow={[ROLES.USER]} />,
             children: [
@@ -81,7 +74,6 @@ export const router = createBrowserRouter([
             ],
           },
 
-          // Vendor-only
           {
             element: <RoleRoute allow={[ROLES.VENDOR]} />,
             children: [
@@ -92,7 +84,6 @@ export const router = createBrowserRouter([
             ],
           },
 
-          // Admin-only
           {
             element: <RoleRoute allow={[ROLES.ADMIN]} />,
             children: [

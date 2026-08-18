@@ -129,7 +129,6 @@ export default function MyAddedTickets() {
         />
       )}
 
-      {/* Edit modal */}
       <Modal open={Boolean(editing)} onClose={() => setEditing(null)} title="Update Ticket" size="lg">
         {editing && (
           <TicketForm
@@ -141,7 +140,6 @@ export default function MyAddedTickets() {
         )}
       </Modal>
 
-      {/* Delete confirm */}
       <ConfirmDialog
         open={Boolean(deleting)}
         title="Delete ticket?"

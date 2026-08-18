@@ -6,9 +6,6 @@ import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
 
 const TILE_SIZES = '(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw';
 
-/** Each tile pairs the destination with imagery that matches the region —
- *  beach for Cox's Bazar, hill country for Chittagong and Sylhet, river for
- *  the launch route to Barishal. */
 const ROUTES = [
   { from: 'Dhaka', to: "Cox's Bazar", photo: PHOTOS.beachSunset, alt: 'Waves washing a wide sandy beach at sunset', price: 1200 },
   { from: 'Dhaka', to: 'Chittagong', photo: PHOTOS.hillsRiver, alt: 'River winding through forested hill country', price: 850 },

@@ -37,9 +37,6 @@ export function Modal({
         onClick={onClose}
         aria-hidden
       />
-      {/* Capped to the viewport with its own scroller: tall forms (Add/Update
-          Ticket) used to overflow off-screen on short and mobile viewports
-          with no way to reach the submit button. */}
       <div
         role="dialog"
         aria-modal="true"

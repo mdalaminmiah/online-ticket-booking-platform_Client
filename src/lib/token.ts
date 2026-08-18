@@ -2,7 +2,6 @@ const STORAGE_KEY = 'ticketbari-jwt';
 
 let inMemoryToken: string | null = null;
 
-/** Small JWT holder shared between the auth provider and the axios interceptor. */
 export const tokenStore = {
   get(): string | null {
     if (inMemoryToken) return inMemoryToken;
@@ -19,7 +18,6 @@ export const tokenStore = {
       if (token) localStorage.setItem(STORAGE_KEY, token);
       else localStorage.removeItem(STORAGE_KEY);
     } catch {
-      /* ignore storage errors (private mode) */
     }
   },
   clear(): void {

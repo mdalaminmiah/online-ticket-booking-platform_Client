@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { env } from '@/config/env';
 
-/** Upload an image file to imgbb and return the hosted URL. */
 export async function uploadImage(file: File): Promise<string> {
   if (!env.imgbbApiKey) {
     throw new Error('Image upload is not configured (missing VITE_IMGBB_API_KEY)');

@@ -60,7 +60,6 @@ export default function Revenue() {
 
       {hasSales ? (
         <div className="mt-6 grid gap-6 lg:grid-cols-5">
-          {/* Revenue per ticket */}
           <div className="card p-6 lg:col-span-3">
             <h3 className="mb-4 font-semibold">Revenue by Ticket</h3>
             <ResponsiveContainer width="100%" height={300}>
@@ -77,7 +76,6 @@ export default function Revenue() {
             </ResponsiveContainer>
           </div>
 
-          {/* Booking status distribution */}
           <div className="card p-6 lg:col-span-2">
             <h3 className="mb-4 font-semibold">Bookings by Status</h3>
             <ResponsiveContainer width="100%" height={300}>

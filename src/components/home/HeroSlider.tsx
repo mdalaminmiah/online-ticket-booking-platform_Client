@@ -56,13 +56,9 @@ export function HeroSlider() {
                 alt={slide.alt}
                 className="absolute inset-0 h-full w-full"
                 imgClassName="hero-media"
-                /* Only the first slide is above the fold on load. */
                 priority={i === 0}
               />
 
-              {/* Two stacked scrims: the horizontal one anchors the copy on
-                  wide screens, the vertical one keeps contrast on mobile
-                  where the text spans the full width. */}
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/25" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/30" />
 

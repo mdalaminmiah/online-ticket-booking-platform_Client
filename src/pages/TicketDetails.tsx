@@ -25,8 +25,6 @@ import { formatCurrency, formatDateTime } from '@/utils/format';
 import { ROLES } from '@/constants';
 import type { Ticket } from '@/types';
 
-/** Book-now action, isolated so the live countdown disables the button the
- *  instant departure passes without needing a parent re-render. */
 function BookNowAction({ ticket, onBook }: { ticket: Ticket; onBook: () => void }) {
   const { isPast: departed } = useCountdown(ticket.departureAt);
   const soldOut = ticket.quantity <= 0;
@@ -89,7 +87,6 @@ export default function TicketDetails() {
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        {/* Image */}
         <SmartImage
           src={ticket.image}
           alt={ticket.title}
@@ -100,7 +97,6 @@ export default function TicketDetails() {
           priority
         />
 
-        {/* Info */}
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
@@ -165,7 +161,6 @@ export default function TicketDetails() {
             <Store size={15} /> Sold by <span className="font-semibold text-slate-700 dark:text-slate-300">{ticket.vendorName}</span>
           </div>
 
-          {/* Book Now */}
           {!user ? (
             <div className="mt-8">
               <Link to="/login" className="btn-primary w-full text-base">

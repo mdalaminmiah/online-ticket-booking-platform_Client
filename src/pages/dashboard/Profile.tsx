@@ -64,7 +64,6 @@ export default function Profile() {
       <PageHeader title="My Profile" subtitle="View and manage your account information." />
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Summary card */}
         <div className="card p-6 text-center lg:col-span-1">
           <div className="relative mx-auto w-fit">
             <Avatar name={user.name} src={photoURL || user.photoURL} size={96} className="text-3xl" />
@@ -93,7 +92,6 @@ export default function Profile() {
           </dl>
         </div>
 
-        {/* Edit form */}
         <div className="card p-6 lg:col-span-2">
           <h3 className="text-lg font-semibold">Edit Information</h3>
           <form onSubmit={handleSubmit((v) => mutation.mutate(v))} className="mt-5 space-y-4">

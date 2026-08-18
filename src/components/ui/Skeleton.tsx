@@ -4,8 +4,6 @@ export function Skeleton({ className }: { className?: string }) {
   return <div className={cn('skeleton', className)} />;
 }
 
-/** Mirrors TicketCard's 16/10 media box so the grid doesn't jump when real
- *  cards replace the placeholders. */
 export function TicketCardSkeleton() {
   return (
     <div className="card h-full overflow-hidden">

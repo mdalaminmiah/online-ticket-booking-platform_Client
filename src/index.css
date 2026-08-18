@@ -1,9 +1,7 @@
 @import 'tailwindcss';
 
-/* Class-based dark mode (toggled on <html class="dark">). */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Design tokens ─────────────────────────────────────────── */
 @theme {
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
@@ -69,9 +67,6 @@
   }
 }
 
-/* Slow Ken Burns push-in used on the hero slides. The scale range is kept
-   deliberately small (1.06 → 1.14) so it reads as a subtle drift rather than
-   a zoom, matching how commercial travel sites treat hero imagery. */
 @keyframes ken-burns {
   from {
     transform: scale(1.06) translate3d(0, 0, 0);
@@ -81,13 +76,9 @@
   }
 }
 
-/* ── Base ──────────────────────────────────────────────────── */
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Safety net against sideways scroll from a wide child. `clip` rather
-       than `hidden` because `hidden` would turn <html> into a scroll
-       container and break the sticky navbar and dashboard header. */
     overflow-x: clip;
   }
   body {
@@ -95,8 +86,6 @@
     @apply dark:bg-slate-950 dark:text-slate-200;
     overflow-x: clip;
   }
-  /* Media never outgrows its column, whatever the intrinsic file size.
-     Scoped to img/video so inline lucide icons keep their baseline. */
   img,
   video {
     @apply max-w-full;
@@ -110,7 +99,6 @@
   ::selection {
     @apply bg-brand-600/20;
   }
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -120,13 +108,11 @@
   }
 }
 
-/* ── Reusable component primitives ─────────────────────────── */
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Shared button base — grouped so variants don't @apply a custom class. */
   .btn,
   .btn-primary,
   .btn-accent,
@@ -181,10 +167,6 @@
   }
 }
 
-/* ── Hero slider ───────────────────────────────────────────── */
-/* Animations are driven by Swiper's own `.swiper-slide-active` class so the
-   Ken Burns push and the copy reveal restart on every slide change without
-   any extra JS or an animation library. */
 .hero-media {
   transform: scale(1.06);
   will-change: transform;
@@ -192,12 +174,6 @@
 .swiper-slide-active .hero-media {
   animation: ken-burns 7.5s ease-out forwards;
 }
-/* The copy is never hidden by a rule of our own. `effect="fade"` already
-   zeroes the opacity of every inactive slide, so the reveal only has to play
-   on the active one — and if Swiper is slow, blocked or fails to initialise,
-   the headline stays fully readable instead of being stuck invisible. The
-   `rise` keyframes start at opacity 0 and finish at 1 with `both` fill, so
-   they supply the fade themselves. */
 .swiper-slide-active .hero-reveal > * {
   animation: var(--animate-rise);
 }
@@ -214,8 +190,6 @@
   animation-delay: 0.54s;
 }
 
-/* Raised clear of the transport strip on Home, which overlaps the hero
-   bottom by -mt-10 and was covering the bullets entirely. */
 .hero-slider .swiper-pagination {
   bottom: 4.5rem !important;
 }
@@ -231,9 +205,6 @@
   background: var(--color-brand-400);
 }
 
-/* ── Motion preferences ────────────────────────────────────── */
-/* Honour the OS "reduce motion" setting: keep the layout and the reveal, drop
-   the movement. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

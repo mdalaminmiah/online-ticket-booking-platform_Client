@@ -138,7 +138,6 @@ export function TicketForm({
         {errors.quantity && <p className="mt-1 text-sm text-rose-600">{errors.quantity.message}</p>}
       </div>
 
-      {/* Perks */}
       <div className="lg:col-span-2">
         <label className="label">Perks</label>
         <div className="flex flex-wrap gap-2">
@@ -162,7 +161,6 @@ export function TicketForm({
         </div>
       </div>
 
-      {/* Image */}
       <div className="lg:col-span-2">
         <label className="label">Ticket Image</label>
         <div className="flex items-center gap-4">
@@ -184,7 +182,6 @@ export function TicketForm({
         {errors.image && <p className="mt-1 text-sm text-rose-600">{errors.image.message}</p>}
       </div>
 
-      {/* Vendor readonly */}
       <div>
         <label className="label">Vendor Name</label>
         <input className="input cursor-not-allowed opacity-60" value={user?.name ?? ''} readOnly />

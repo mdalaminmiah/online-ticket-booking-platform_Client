@@ -12,7 +12,6 @@ export default function AuthLayout() {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
-      {/* Brand panel */}
       <div className="relative hidden overflow-hidden bg-brand-700 lg:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
         <img
@@ -37,7 +36,6 @@ export default function AuthLayout() {
         </div>
       </div>
 
-      {/* Form panel */}
       <div className="flex flex-col">
         <div className="flex items-center justify-between p-6">
           <Link to="/" className="lg:invisible">

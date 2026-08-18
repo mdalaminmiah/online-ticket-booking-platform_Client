@@ -25,7 +25,6 @@ export default function Home() {
     <>
       <HeroSlider />
 
-      {/* Transport modes strip */}
       <section className="container-page -mt-10 relative z-10">
         <div className="card grid grid-cols-2 gap-4 p-6 sm:grid-cols-4">
           {TRANSPORTS.map((t) => (
@@ -44,7 +43,6 @@ export default function Home() {
       <LatestTickets />
       <WhyChooseUs />
 
-      {/* Stats band */}
       <section className="bg-brand-700 py-14">
         <div className="container-page grid grid-cols-2 gap-8 text-center lg:grid-cols-4">
           {STATS.map((s) => (
@@ -56,7 +54,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="container-page py-16">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 px-8 py-14 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.15),transparent_40%)]" />

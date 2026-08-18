@@ -1,8 +1,6 @@
 import { Link, useRouteError, isRouteErrorResponse } from 'react-router-dom';
 import { Home, RotateCw } from 'lucide-react';
 
-/** Root `errorElement` — catches render/loader exceptions so users get a
- *  branded page instead of React Router's raw stack-trace screen. */
 export default function RouteError() {
   const error = useRouteError();
   const title = isRouteErrorResponse(error) ? `${error.status} ${error.statusText}` : 'Something went wrong';

@@ -7,8 +7,6 @@ import { Badge } from '@/components/ui/Badge';
 import { SmartImage } from '@/components/ui/SmartImage';
 import { fallbackFor } from '@/constants/images';
 
-/** Matches the card grids (1 / 2 / 3 / 4 columns) so the CDN never ships a
- *  file wider than the slot it lands in. */
 const CARD_SIZES = '(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw';
 
 export function TicketCard({ ticket, showRoute = true }: { ticket: Ticket; showRoute?: boolean }) {
@@ -47,8 +45,6 @@ export function TicketCard({ ticket, showRoute = true }: { ticket: Ticket; showR
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        {/* Two clamped lines with a reserved minimum keeps every card's text
-            block starting at the same y-offset, however long the title is. */}
         <h3 className="line-clamp-2 min-h-11 text-base font-semibold leading-snug">{ticket.title}</h3>
 
         {showRoute && (
@@ -80,8 +76,6 @@ export function TicketCard({ ticket, showRoute = true }: { ticket: Ticket; showR
           </div>
         )}
 
-        {/* mt-auto pins price + CTA to the bottom, so buttons stay on one line
-            across a row even when perks or the route are missing. */}
         <div className="mt-auto">
           <div className="mt-4 flex items-end justify-between gap-3 border-t border-slate-100 pt-4 dark:border-slate-800">
             <div className="min-w-0">

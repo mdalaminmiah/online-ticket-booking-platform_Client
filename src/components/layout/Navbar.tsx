@@ -61,7 +61,6 @@ export function Navbar() {
       <nav className="container-page flex h-16 items-center justify-between gap-4">
         <Logo />
 
-        {/* Desktop links */}
         <div className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((l) => (
             <NavLink key={l.to} to={l.to} end={l.end} className={linkClass}>
@@ -127,7 +126,6 @@ export function Navbar() {
             </div>
           )}
 
-          {/* Mobile toggle */}
           <button
             className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 md:hidden dark:border-slate-700"
             onClick={() => setMobileOpen((o) => !o)}
@@ -138,7 +136,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-slate-200 bg-white px-4 py-4 md:hidden dark:border-slate-800 dark:bg-slate-950">
           <div className="flex flex-col gap-1">
