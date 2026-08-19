@@ -15,6 +15,7 @@ import { formatCurrency } from '@/utils/format';
 import { MAX_ADVERTISED } from '@/constants';
 import { cn } from '@/utils/cn';
 import type { Ticket } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 function Toggle({ on, disabled, onClick }: { on: boolean; disabled?: boolean; onClick: () => void }) {
   return (
@@ -34,6 +35,7 @@ function Toggle({ on, disabled, onClick }: { on: boolean; disabled?: boolean; on
 }
 
 export default function Advertise() {
+  usePageTitle('Advertise Tickets');
   const queryClient = useQueryClient();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['admin', 'advertise'],

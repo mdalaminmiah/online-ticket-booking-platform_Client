@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Home, Compass } from 'lucide-react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function NotFound() {
+  usePageTitle('Page Not Found');
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-6 text-center dark:bg-slate-950">
       <p className="font-display text-[8rem] font-extrabold leading-none text-brand-600">404</p>

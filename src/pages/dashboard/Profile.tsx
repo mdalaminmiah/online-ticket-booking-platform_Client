@@ -13,6 +13,7 @@ import { Avatar } from '@/components/ui/Avatar';
 import { Spinner } from '@/components/ui/Spinner';
 import { getErrorMessage } from '@/lib/axios';
 import { formatDate } from '@/utils/format';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const schema = z.object({
   name: z.string().min(2, 'Name is too short'),
@@ -21,6 +22,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function Profile() {
+  usePageTitle('My Profile');
   const { user, refreshUser } = useAuth();
   const [photoURL, setPhotoURL] = useState(user?.photoURL ?? '');
   const [uploading, setUploading] = useState(false);

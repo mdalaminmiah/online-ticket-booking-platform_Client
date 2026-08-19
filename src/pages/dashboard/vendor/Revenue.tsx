@@ -20,6 +20,7 @@ import { PageLoader } from '@/components/ui/Spinner';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { formatCurrency } from '@/utils/format';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const STATUS_COLORS: Record<string, string> = {
   pending: '#f59e0b',
@@ -29,6 +30,7 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default function Revenue() {
+  usePageTitle('Revenue Overview');
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['vendor', 'revenue'],
     queryFn: vendorApi.revenue,

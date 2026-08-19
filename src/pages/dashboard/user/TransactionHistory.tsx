@@ -8,8 +8,10 @@ import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { formatCurrency, formatDateTime } from '@/utils/format';
 import type { Transaction } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function TransactionHistory() {
+  usePageTitle('Transaction History');
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['transactions', 'mine'],
     queryFn: paymentsApi.mine,

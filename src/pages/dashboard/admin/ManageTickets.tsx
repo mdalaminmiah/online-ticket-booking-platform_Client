@@ -17,6 +17,7 @@ import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency } from '@/utils/format';
 import { TICKET_STATUS } from '@/constants';
 import type { Ticket } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const FILTERS = [
   { value: '', label: 'All' },
@@ -26,6 +27,7 @@ const FILTERS = [
 ];
 
 export default function ManageTickets() {
+  usePageTitle('Manage Tickets');
   const queryClient = useQueryClient();
   const [status, setStatus] = useState('');
   const [page, setPage] = useState(1);

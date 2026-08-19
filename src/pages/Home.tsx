@@ -5,6 +5,7 @@ import { AdvertisementSection } from '@/components/home/AdvertisementSection';
 import { LatestTickets } from '@/components/home/LatestTickets';
 import { PopularRoutes } from '@/components/home/PopularRoutes';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const STATS = [
   { value: '50K+', label: 'Happy Travellers' },
@@ -21,6 +22,7 @@ const TRANSPORTS = [
 ];
 
 export default function Home() {
+  usePageTitle('Home');
   return (
     <>
       <HeroSlider />

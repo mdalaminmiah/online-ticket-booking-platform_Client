@@ -5,8 +5,10 @@ import { ticketsApi, type CreateTicketInput } from '@/api/tickets';
 import { TicketForm } from '@/components/dashboard/TicketForm';
 import { PageHeader } from '@/components/dashboard/PageHeader';
 import { getErrorMessage } from '@/lib/axios';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function AddTicket() {
+  usePageTitle('Add Ticket');
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 

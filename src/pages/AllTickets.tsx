@@ -11,6 +11,7 @@ import { Pagination } from '@/components/ui/Pagination';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useDebounce } from '@/hooks/useDebounce';
 import { PAGE_SIZE, TRANSPORT_TYPES } from '@/constants';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest First' },
@@ -19,6 +20,7 @@ const SORT_OPTIONS = [
 ] as const;
 
 export default function AllTickets() {
+  usePageTitle('All Tickets');
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
   const [transportType, setTransportType] = useState(searchParams.get('transport') ?? '');

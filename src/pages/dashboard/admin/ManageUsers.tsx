@@ -17,6 +17,7 @@ import { useAuth } from '@/context/AuthContext';
 import { getErrorMessage } from '@/lib/axios';
 import { ROLES } from '@/constants';
 import type { AppUser } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const ROLE_TONE: Record<string, 'brand' | 'accent' | 'neutral'> = {
   admin: 'brand',
@@ -25,6 +26,7 @@ const ROLE_TONE: Record<string, 'brand' | 'accent' | 'neutral'> = {
 };
 
 export default function ManageUsers() {
+  usePageTitle('Manage Users');
   const { user: currentUser } = useAuth();
   const queryClient = useQueryClient();
   const [search, setSearch] = useState('');

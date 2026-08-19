@@ -18,8 +18,10 @@ import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency, formatDateTime } from '@/utils/format';
 import { TICKET_STATUS } from '@/constants';
 import type { Ticket } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function MyAddedTickets() {
+  usePageTitle('My Added Tickets');
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState<Ticket | null>(null);
   const [deleting, setDeleting] = useState<Ticket | null>(null);

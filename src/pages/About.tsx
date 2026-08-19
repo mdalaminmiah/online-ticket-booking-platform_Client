@@ -1,7 +1,9 @@
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Target, Users, Globe2 } from 'lucide-react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function About() {
+  usePageTitle('About');
   return (
     <div className="container-page py-12">
       <SectionHeading center eyebrow="About Us" title="Connecting Bangladesh, one ticket at a time" description="TicketBari is a modern travel-ticketing marketplace bringing bus, train, launch and flight bookings together in one seamless platform." />

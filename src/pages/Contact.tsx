@@ -2,8 +2,10 @@ import toast from 'react-hot-toast';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { CONTACT } from '@/constants';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function Contact() {
+  usePageTitle('Contact');
   return (
     <div className="container-page py-12">
       <SectionHeading center eyebrow="Get in Touch" title="Contact Us" description="Have a question or need help with a booking? We'd love to hear from you." />

@@ -12,8 +12,10 @@ import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency } from '@/utils/format';
 import { BOOKING_STATUS } from '@/constants';
 import type { Booking } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function RequestedBookings() {
+  usePageTitle('Requested Bookings');
   const queryClient = useQueryClient();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['bookings', 'requested'],

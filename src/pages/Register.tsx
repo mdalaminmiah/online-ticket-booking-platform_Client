@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { useAuth } from '@/context/AuthContext';
 import { Spinner } from '@/components/ui/Spinner';
 import { GoogleButton } from '@/components/auth/GoogleButton';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -21,6 +22,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function Register() {
+  usePageTitle('Register');
   const { register: signUp } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);

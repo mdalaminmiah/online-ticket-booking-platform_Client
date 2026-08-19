@@ -10,8 +10,10 @@ import { TicketCardSkeleton } from '@/components/ui/Skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import type { Booking } from '@/types';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function MyBookedTickets() {
+  usePageTitle('My Booked Tickets');
   const [payingBooking, setPayingBooking] = useState<Booking | null>(null);
 
   const { data, isLoading, isError, refetch } = useQuery({

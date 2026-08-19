@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Ticket, PlusCircle, Users, BarChart3, Receipt, ShieldCheck, Megaphone, ClipboardList } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { ROLES } from '@/constants';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const LINKS = {
   user: [
@@ -23,6 +24,7 @@ const LINKS = {
 };
 
 export default function Overview() {
+  usePageTitle('Dashboard');
   const { user } = useAuth();
   const role = (user?.role ?? ROLES.USER) as keyof typeof LINKS;
   const links = LINKS[role] ?? LINKS.user;
