@@ -45,3 +45,12 @@ export const TRANSPORT_FALLBACK: Record<string, string> = {
 export function fallbackFor(transportType?: string): string {
   return (transportType && TRANSPORT_FALLBACK[transportType]) || PLACEHOLDER_IMAGE;
 }
+
+export const IMAGE_SIZES = {
+  cardGrid: '(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw',
+  dashboardGrid: '(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw',
+  routeTile: '(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw',
+  detail: '(min-width: 1024px) 46vw, 92vw',
+  full: '100vw',
+  half: '50vw',
+} as const;

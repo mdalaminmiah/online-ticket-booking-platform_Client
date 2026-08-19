@@ -3,7 +3,7 @@ import { Logo } from '@/components/layout/Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { useAuth } from '@/context/AuthContext';
 import { FullScreenLoader } from '@/components/ui/Spinner';
-import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
+import { PHOTOS, unsplashUrl, unsplashSrcSet, IMAGE_SIZES } from '@/constants/images';
 
 export default function AuthLayout() {
   const { status } = useAuth();
@@ -17,7 +17,7 @@ export default function AuthLayout() {
         <img
           src={unsplashUrl(PHOTOS.planeWing, 1200)}
           srcSet={unsplashSrcSet(PHOTOS.planeWing)}
-          sizes="50vw"
+          sizes={IMAGE_SIZES.half}
           alt=""
           className="h-full w-full object-cover opacity-25"
         />

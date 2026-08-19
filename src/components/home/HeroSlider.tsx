@@ -3,7 +3,7 @@ import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search } from 'lucide-react';
 import { SmartImage } from '@/components/ui/SmartImage';
-import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
+import { PHOTOS, unsplashUrl, unsplashSrcSet, IMAGE_SIZES } from '@/constants/images';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
@@ -52,7 +52,7 @@ export function HeroSlider() {
               <SmartImage
                 src={unsplashUrl(slide.photo, 1600, 16 / 9)}
                 srcSet={unsplashSrcSet(slide.photo, 16 / 9)}
-                sizes="100vw"
+                sizes={IMAGE_SIZES.full}
                 alt={slide.alt}
                 className="absolute inset-0 h-full w-full"
                 imgClassName="hero-media"

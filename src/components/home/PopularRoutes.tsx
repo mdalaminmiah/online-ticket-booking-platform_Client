@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SmartImage } from '@/components/ui/SmartImage';
-import { PHOTOS, unsplashUrl, unsplashSrcSet } from '@/constants/images';
-
-const TILE_SIZES = '(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 92vw';
+import { PHOTOS, unsplashUrl, unsplashSrcSet, IMAGE_SIZES } from '@/constants/images';
 
 const ROUTES = [
   { from: 'Dhaka', to: "Cox's Bazar", photo: PHOTOS.beachSunset, alt: 'Waves washing a wide sandy beach at sunset', price: 1200 },
@@ -27,7 +25,7 @@ export function PopularRoutes() {
             <SmartImage
               src={unsplashUrl(r.photo, 800, 3 / 2)}
               srcSet={unsplashSrcSet(r.photo, 3 / 2)}
-              sizes={TILE_SIZES}
+              sizes={IMAGE_SIZES.routeTile}
               alt={r.alt}
               ratio="3/2"
               imgClassName="transition-transform duration-700 group-hover:scale-110"

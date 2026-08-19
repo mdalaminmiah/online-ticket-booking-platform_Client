@@ -5,9 +5,7 @@ import { formatCurrency, formatDateTime } from '@/utils/format';
 import { TransportIcon } from './TransportIcon';
 import { Badge } from '@/components/ui/Badge';
 import { SmartImage } from '@/components/ui/SmartImage';
-import { fallbackFor } from '@/constants/images';
-
-const CARD_SIZES = '(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw';
+import { fallbackFor, IMAGE_SIZES } from '@/constants/images';
 
 export function TicketCard({ ticket, showRoute = true }: { ticket: Ticket; showRoute?: boolean }) {
   const soldOut = ticket.quantity <= 0;
@@ -18,7 +16,7 @@ export function TicketCard({ ticket, showRoute = true }: { ticket: Ticket; showR
           src={ticket.image}
           alt={ticket.title}
           ratio="16/10"
-          sizes={CARD_SIZES}
+          sizes={IMAGE_SIZES.cardGrid}
           fallback={fallbackFor(ticket.transportType)}
           imgClassName="transition-transform duration-500 group-hover:scale-105"
         />

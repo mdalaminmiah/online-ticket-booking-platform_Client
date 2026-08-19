@@ -13,7 +13,7 @@ import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { TicketForm } from '@/components/dashboard/TicketForm';
 import { TransportIcon } from '@/components/tickets/TransportIcon';
 import { SmartImage } from '@/components/ui/SmartImage';
-import { fallbackFor } from '@/constants/images';
+import { fallbackFor, IMAGE_SIZES } from '@/constants/images';
 import { getErrorMessage } from '@/lib/axios';
 import { formatCurrency, formatDateTime } from '@/utils/format';
 import { TICKET_STATUS } from '@/constants';
@@ -79,7 +79,7 @@ export default function MyAddedTickets() {
                     src={t.image}
                     alt={t.title}
                     ratio="16/10"
-                    sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+                    sizes={IMAGE_SIZES.dashboardGrid}
                     fallback={fallbackFor(t.transportType)}
                   />
                   <div className="pointer-events-none absolute right-3 top-3">

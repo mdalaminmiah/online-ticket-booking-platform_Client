@@ -2,6 +2,7 @@ import { ArrowRight, Calendar, CreditCard, Ticket as TicketIcon } from 'lucide-r
 import type { Booking } from '@/types';
 import { StatusBadge } from '@/components/ui/Badge';
 import { SmartImage } from '@/components/ui/SmartImage';
+import { IMAGE_SIZES } from '@/constants/images';
 import { Countdown } from '@/components/ui/Countdown';
 import { useCountdown } from '@/hooks/useCountdown';
 import { formatCurrency, formatDateTime } from '@/utils/format';
@@ -19,7 +20,7 @@ export function BookingCard({ booking, onPay }: { booking: Booking; onPay: (b: B
           src={booking.ticketImage}
           alt={booking.ticketTitle}
           ratio="16/10"
-          sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+          sizes={IMAGE_SIZES.dashboardGrid}
         />
         <div className="pointer-events-none absolute right-3 top-3">
           <StatusBadge status={booking.status} />

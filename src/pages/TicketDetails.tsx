@@ -16,7 +16,7 @@ import { TransportIcon } from '@/components/tickets/TransportIcon';
 import { BookingModal } from '@/components/tickets/BookingModal';
 import { Countdown } from '@/components/ui/Countdown';
 import { SmartImage } from '@/components/ui/SmartImage';
-import { fallbackFor } from '@/constants/images';
+import { fallbackFor, IMAGE_SIZES } from '@/constants/images';
 import { PageLoader } from '@/components/ui/Spinner';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { StatusBadge } from '@/components/ui/Badge';
@@ -91,7 +91,7 @@ export default function TicketDetails() {
           src={ticket.image}
           alt={ticket.title}
           ratio="4/3"
-          sizes="(min-width: 1024px) 46vw, 92vw"
+          sizes={IMAGE_SIZES.detail}
           fallback={fallbackFor(ticket.transportType)}
           className="rounded-3xl"
           priority
